@@ -1,25 +1,24 @@
-# DevOps EPA Assessment Project
+# Kubenetes CI/CD Project
 
-This project demonstrates the implementation of a DevOps pipeline, infrastructure-as-code principles, and continuous delivery using Kubernetes, ArgoCD, and Nginx. It also includes an observability stack for monitoring, logging, and alerting. The overall objective is to showcase a performant, secure, and highly available platform that meets the assessment criteria.
+This project demonstrates the implementation of a DevOps pipeline, infrastructure-as-code principles, and continuous delivery using Kubernetes, ArgoCD, and Nginx. It also includes an observability stack for monitoring, logging, and alerting.
 
 ## Project Overview
 ### Key Features
 
-- ArgoCD for Continuous Delivery: Automated deployment and synchronization of applications with GitOps principles.
+- ArgoCD for Continuous Delivery: Automated deployment of applications with GitOps principles.
 - Kubernetes-Based Platform: Deployment of Nginx and WordPress services with Kubernetes manifests.
-- Ingress Management: Centralized traffic routing with Nginx Ingress controllers.
+- Ingress Management: Centralised traffic routing with Nginx Ingress controllers.
 - Observability Stack: Elasticsearch, Kibana, Metricbeat, and Filebeat for monitoring and alerting.
-- CI/CD Integration: GitHub Actions or another CI/CD tool for automating builds and deployments.
+- CI/CD Integration: GitHub Actions or Jenkins for automating builds and deployments.
 
 
 ## Getting Started
 
 ### Prerequisites
 
-1. Kubernetes Cluster: Make sure you have access to a running Kubernetes cluster.
-2. Kubectl: Kubernetes command-line tool installed.
-3. ArgoCD: Installed and accessible.
-4. GitHub Repository: Set up with this project's configuration.
+1. Kubernetes Cluster
+2. Kubectl
+3. ArgoCD
 
 
 ### Installing
