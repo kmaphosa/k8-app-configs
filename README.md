@@ -27,7 +27,7 @@ This project demonstrates the implementation of a DevOps pipeline, infrastructur
 1. Clone the repository:
 ```
 git clone https://github.com/kmaphosa/k8-app-configs.git
-cd https://github.com/kmaphosa/k8-app-configs.git
+cd k8-app-configs/
 ```
 2. Set up ArgoCD:
    - Apply the application.yaml file in the react-nginx directory to your ArgoCD instance.
