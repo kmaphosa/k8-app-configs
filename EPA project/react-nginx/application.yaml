@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kmaphosa/k8-app-configs.git
+    repoURL: <github_Repo>
     targetRevision: HEAD
     path: react-nginx
   destination:
