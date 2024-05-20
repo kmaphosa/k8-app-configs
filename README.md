@@ -57,5 +57,5 @@ helm install filebeat -f monitoring/filebeat-values.yaml elastic/filebeat
 
 ## Authors
 
-keith.maphosa@baesystems.com  
+Keith Maphosa  
 
