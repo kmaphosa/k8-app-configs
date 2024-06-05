@@ -39,7 +39,7 @@ jobs:
         username: ${{ secrets.K8S_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          uname -a
+          ssh -vvv -o StrictHostKeyChecking=no ${{ secrets.K8S_USERNAME }}@${{ secrets.K8S_HOST }} uname -a
 
     - name: Set up Kubernetes context
       env:
