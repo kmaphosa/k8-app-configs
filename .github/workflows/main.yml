@@ -40,9 +40,12 @@ jobs:
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config 
         
     - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: |
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.K8S_HOST }}
+        username: ${{ secrets.K8S_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
           kubectl apply -f k8s/nginx-deployment.yaml
           kubectl apply -f k8s/wordpress-deployment.yaml
           kubectl apply -f k8s/mysql-deployment.yaml
