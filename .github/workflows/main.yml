@@ -32,13 +32,17 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest ./wordpress
         docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:latest
 
+    - name: Set up Kubernetes context
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      run: |
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config 
+        
     - name: Deploy to Kubernetes
-      uses: appleboy/ssh-action@v0.1.3
-      with:
-        host: ${{ secrets.K8S_HOST }}
-        username: ${{ secrets.K8S_USERNAME }}
-        key: ${{ secrets.K8S_KEY }}
-        script: |
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      run: |
           kubectl apply -f k8s/nginx-deployment.yaml
           kubectl apply -f k8s/wordpress-deployment.yaml
           kubectl apply -f k8s/mysql-deployment.yaml
