@@ -32,6 +32,15 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest ./wordpress
         docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:latest
 
+    - name: Test SSH connection
+      uses: appleboy/ssh-action@v0.1.3
+      with:
+        host: ${{ secrets.K8S_HOST }}
+        username: ${{ secrets.K8S_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          uname -a
+
     - name: Set up Kubernetes context
       env:
         KUBECONFIG: ${{ secrets.KUBECONFIG }}
