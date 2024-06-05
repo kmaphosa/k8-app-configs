@@ -24,12 +24,12 @@ jobs:
 
     - name: Build and push Nginx image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx:latest ./Projects/k8-app-configs/nginx
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx:latest ./nginx
         docker push ${{ secrets.DOCKER_USERNAME }}/nginx:latest
 
     - name: Build and push WordPress image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest ./Projects/k8-app-configs/wordpress
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest ./wordpress
         docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:latest
 
     - name: Deploy to Kubernetes
