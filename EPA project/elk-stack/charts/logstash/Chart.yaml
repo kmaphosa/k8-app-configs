@@ -1,5 +1,0 @@
-apiVersion: v2
-name: logstash
-description: A Helm chart for Logstash
-version: 1.0.0
-appVersion: 8.9.2
