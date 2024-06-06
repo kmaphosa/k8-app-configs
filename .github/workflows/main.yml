@@ -61,6 +61,10 @@ jobs:
           helm repo add grafana https://grafana.github.io/helm-charts
           helm repo update
 
+    - name: Create monitoring namespace
+      run: | 
+          kubectl create namespace monitoring || true
+
     - name: Create Prometheus ConfigMap
       run: |
           kubectl apply -f k8s/prometheus-configmap.yaml 
