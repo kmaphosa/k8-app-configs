@@ -1,0 +1,4 @@
+datasources:
+  enabled: true
+  configMaps:
+    default-datasources: grafana-datasources
