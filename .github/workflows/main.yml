@@ -32,27 +32,48 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest ./wordpress
         docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:latest
 
-    - name: Install sshpass
-      run: sudo apt-get install -y sshpass
-    
-    - name: Test SSH connection
-      run: | 
-        sshpass -p ${{ secrets.PSWD }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.USER }}@${{ secrets.VPS_IP }} uname -a
-      env:
-        SSHPASS: ${{ secrets.PSWD }}
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        
+    - name: Update kubeconfig
+      run: |
+        aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
         
     - name: Deploy to Kubernetes
-      if: success()
       run: |
-        sshpass -p ${{ secrets.PSWD }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.USER }}@${{ secrets.VPS_IP }} "
           kubectl apply -f k8s/nginx-deployment.yaml
           kubectl apply -f k8s/wordpress-deployment.yaml
           kubectl apply -f k8s/mysql-deployment.yaml
           kubectl apply -f k8s/nginx-service.yaml
           kubectl apply -f k8s/wordpress-service.yaml
           kubectl apply -f k8s/mysql-service.yaml
-        "
+      
+    - name: Install Helm
+      run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-      env:
-        SSHPASS: ${{ secrets.PSWD }}
+    - name: Add Helm Repositories
+      run: |
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm repo add grafana https://grafana.github.io/helm-charts
+          helm repo update
+
+    - name: Create Prometheus ConfigMap
+      run: |
+          kubectl apply -f k8s/prometheus-configmap.yaml 
+    
+    - name: Create Grafana ConfigMap
+      run: | 
+          kubectl apply -f k8s/grafana-datasource-configmap.yaml 
+          
+    - name: Install Prometheus
+      run: | 
+          kubectl create namespace monitoring || true helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring 
+          
+    - name: Install Grafana
+      run: | 
+          helm install grafana grafana/grafana --namespace monitoring -f k8s/grafana-values.yaml
 
