@@ -1,6 +1,6 @@
 # Kubenetes CI/CD Project
 
-This project demonstrates the implementation of a DevOps pipeline, infrastructure-as-code principles, and continuous delivery using Kubernetes, ArgoCD, and Nginx. It also includes an observability stack for monitoring, logging, and alerting.
+This project demonstrates the implementation of a DevOps CI/CD pipeline using Git, Docker, Kubernetes and Nginx. It also includes an observability stack for monitoring, logging, and alerting.
 
 ## Project Overview
 ### Key Features
