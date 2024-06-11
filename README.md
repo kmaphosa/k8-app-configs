@@ -65,5 +65,5 @@ kubectl port-forward -n monitoring svc/grafana 3000:3000
 
 ## Authors
 
-Keith Maphosa  
+Keith Maphosa  | Contact: kmaphosa96@gmail.com
 
