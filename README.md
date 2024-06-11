@@ -33,15 +33,14 @@ cd k8-app-configs/
 
 ```
 2. AWS Cloud environment:
-```
+
 - Create IAM User: Create an IAM user with programmatic access and attach the necessary policies for EKS and EC2.
 - Install AWS CLI:
-  ```sh
+  ```
   curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
   sudo installer -pkg AWSCLIV2.pkg -target /
   aws configure
-
-```
+  ```
 3. Install eksctl
 ```
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
