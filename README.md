@@ -5,8 +5,8 @@ This project demonstrates the implementation of a DevOps pipeline, infrastructur
 ## Project Overview
 ### Key Features
 
-- CI/CD Pipeline with GitHub Actions**: Automated builds, testing, and deployment using GitHub Actions.
-- Kubernetes-Based Platform (EKS)**: Deployment of Nginx and WordPress services with Kubernetes manifests.
+- CI/CD Pipeline with GitHub Actions: Automated builds, testing, and deployment using GitHub Actions.
+- Kubernetes-Based Platform (EKS): Deployment of Nginx and WordPress services with Kubernetes manifests.
 - Ingress Management: Centralised traffic routing with Nginx Ingress controllers.
 - Observability Stack: Prometheus and Grafana for monitoring and alerting.
 - Docker: Containerisation of applications for consistent deployment.
