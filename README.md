@@ -16,7 +16,7 @@ This project demonstrates the implementation of a DevOps pipeline, infrastructur
 
 ### Prerequisites
 
-
+- Linux OS 
 - AWS Account
 - AWS CLI
 - `eksctl`
@@ -34,8 +34,8 @@ cd k8-app-configs/
 ```
 2. AWS Cloud environment:
 ```
-- **Create IAM User**: Create an IAM user with programmatic access and attach the necessary policies for EKS and EC2.
-- **Install AWS CLI**:
+- Create IAM User: Create an IAM user with programmatic access and attach the necessary policies for EKS and EC2.
+- Install AWS CLI:
   ```sh
   curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
   sudo installer -pkg AWSCLIV2.pkg -target /
@@ -44,7 +44,7 @@ cd k8-app-configs/
 ```
 3. Install eksctl
 ```
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_$(uname -m).tar.gz" | tar xz -C /tmp
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 
 ```
