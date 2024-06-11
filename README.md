@@ -53,7 +53,7 @@ eksctl create cluster --name <cluster_name> --version 1.30 --region <region-code
 
 ```
 5. Configure and Run the pipeline:
-- Update the following config files with your environment variables (.github/workflows/deploy.yml, k8s/prometheus-configmap.yaml, k8s/grafana-datasource-configmap.yaml)
+- Update the following config files with your environment variables (.github/workflows/main.yml, k8s/prometheus-configmap.yaml, k8s/grafana-datasource-configmap.yaml)
 - Access the services via the respective URLs:
 ```
 kubectl port-forward -n monitoring svc/prometheus-kube-prometheus-prometheus 9090:9090
